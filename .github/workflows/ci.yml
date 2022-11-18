@@ -1,0 +1,29 @@
+name: "CI"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  Policies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_wrapper: false
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install Custodian
+        run: |
+          pip install c7n_left c7n
+      - name: Pull Modules
+        run: |
+          terraform -chdir=root-module get
+      - name: Check Terraform
+        run: |
+          c7n-left run --policy-dir policies -d root-module -o github
