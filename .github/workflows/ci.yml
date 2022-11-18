@@ -23,7 +23,7 @@ jobs:
           pip install c7n_left
       - name: Pull Modules
         run: |
-          terraform -chdir root-module get
+          terraform -chdir=root-module get
       - name: Check Terraform
         run: |
           c7n-left run --policy-dir policies -d root-module -o github
