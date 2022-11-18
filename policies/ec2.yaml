@@ -1,0 +1,14 @@
+policies:
+   - name: check-ec2-ssh-open-cidr
+     resource: terraform.aws_ec2_instance
+     description: "EC2 should not be open to world on ssh"
+     filters:
+       - type: traverse
+         resources:
+           - aws_security_group
+           - aws_security_ingress_permission
+         attrs:
+           Port: 22
+           Ipv4: 0.0.0.0/0
+        
+
