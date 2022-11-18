@@ -1,0 +1,10 @@
+policies:
+  - name: test-sqs-is-encrypted
+    description: |
+      SQS Must have server side encryption enabled
+    resource: terraform.aws_sqs_queue
+    filters:
+      - type: value
+        key: sqs_managed_sse_enabled
+        value: empty
+

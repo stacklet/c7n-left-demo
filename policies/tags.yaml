@@ -1,0 +1,7 @@
+policies:
+  - name: check-tags
+    description: "resources should be tagged"
+    resource: terraform.aws_*
+    filters:
+      - tags: absent
+
