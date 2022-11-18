@@ -26,4 +26,4 @@ jobs:
           terraform -chdir=root-module get
       - name: Check Terraform
         run: |
-          c7n-left run --policy-dir policies -d root-module -o github
+          c7n-left run --policy-dir policies -d root-module
