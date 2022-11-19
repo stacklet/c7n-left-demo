@@ -20,10 +20,11 @@ jobs:
           python-version: "3.10"
       - name: Install Custodian
         run: |
-          pip install c7n_left c7n
+          pip install 'c7n_left @ git+https://github.com/kapilt/cloud-custodian@86c45aa#subdirectory=tools/c7n_left'
+          pip install c7n
       - name: Pull Modules
         run: |
           terraform -chdir=root-module get
       - name: Check Terraform
         run: |
-          c7n-left run --policy-dir policies -d root-module
+          c7n-left run --policy-dir policies -d root-module -o github
