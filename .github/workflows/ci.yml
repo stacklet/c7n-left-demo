@@ -20,7 +20,7 @@ jobs:
           python-version: "3.10"
       - name: Install Custodian
         run: |
-          pip install 'c7n_left @ git+https://github.com/kapilt/cloud-custodian@aab880dc5#subdirectory=tools/c7n_left'
+          pip install 'c7n_left @ git+https://github.com/kapilt/cloud-custodian@86c45aa#subdirectory=tools/c7n_left'
           pip install c7n
       - name: Pull Modules
         run: |
