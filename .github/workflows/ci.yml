@@ -21,13 +21,14 @@ jobs:
       - name: Install Custodian
         run: |
           pip install c7n_left
+
       - name: Pull Modules
         run: |
           terraform -chdir=root-module get
       - name: Check Terraform AWS
         run: |
-          c7n-left run --policy-dir policies -d root-module
+          c7n-left run --policy-dir policies -d root-module -o github
       - name: Check Terraform GCP
         run: |
-          c7n-left run --policy-dir policies-gcp -d root-module-gcp
+          c7n-left run --policy-dir policies-gcp -d root-module-gcp -o github
 
