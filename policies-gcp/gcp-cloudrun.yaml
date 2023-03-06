@@ -1,0 +1,12 @@
+policies:
+ - name: gcp-cloud-run-approved-registry
+   resource: terraform.google_cloud_run_v2_job
+   metadata:
+     severity: CRITICAL
+   filters:
+     - type: value
+       key: template.template.image
+       value: "internal.registry*"
+       value_type: glob
+
+       

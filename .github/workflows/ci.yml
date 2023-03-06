@@ -24,6 +24,10 @@ jobs:
       - name: Pull Modules
         run: |
           terraform -chdir=root-module get
-      - name: Check Terraform
+      - name: Check Terraform AWS
         run: |
           c7n-left run --policy-dir policies -d root-module
+      - name: Check Terraform GCP
+        run: |
+          c7n-left run --policy-dir policies-gcp -d root-module-gcp
+

@@ -1,0 +1,16 @@
+policies:
+  - name: check-labels
+    description: "resources should be tagged"
+    resource: terraform.google_*
+    metadata:
+     severity: HIGH
+    filters:
+      - type: value 
+        key: "__tfmeta.label"
+        op: not-in
+        value: 
+         - "terraform.google_compute_network"
+         - "terraform.google_compute_subnetwork"
+         - "terraform.google_vpc_access_connector"
+      - labels: absent
+        
