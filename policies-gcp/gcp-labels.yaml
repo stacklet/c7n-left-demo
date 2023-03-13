@@ -3,7 +3,7 @@ policies:
     description: "resources should be tagged"
     resource: terraform.google_*
     metadata:
-     severity: HIGH
+     severity: MEDIUM
     filters:
       - type: value 
         key: "__tfmeta.label"
