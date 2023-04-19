@@ -1,0 +1,13 @@
+policies:
+  - name: test-s3-is-encrypted
+    description: |
+      S3 Must have server side encryption enabled
+    resource: terraform.aws_s3_bucket
+    filters:
+      - type: value
+        key: server_side_encryption_configuration.sse_algorithm
+        value: empty
+      - type: value
+        key: "tag:encryption_exception"
+        value: empty
+
