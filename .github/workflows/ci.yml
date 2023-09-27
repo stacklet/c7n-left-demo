@@ -21,7 +21,6 @@ jobs:
       - name: Install Custodian
         run: |
           pip install c7n_left
-
       - name: Pull Modules
         run: |
           terraform -chdir=root-module get
