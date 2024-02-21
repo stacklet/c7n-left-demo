@@ -1,0 +1,24 @@
+policies:
+  - name: ec2-allowed-dev-instances
+    description: "dev environments should use approved instances (t4*, m6g.medium, m6[i|g].large)"
+    resource: terraform.aws_instance
+    metadata:
+      severity: high
+      categories: [cost]
+    filters:
+      - type: value
+        key: instance_type
+        op: not-in
+        value:
+          - t4g.nano
+          - t4g.micro
+          - t4g.small
+          - t4g.medium
+          - t4g.large
+          - t4g.xlarge
+          - t4g.2xlarge
+          - m6g.medium
+          - m6g.large
+          - m6i.large
+
+    
