@@ -1,0 +1,19 @@
+policies:
+  - name: check-ebs-volume-type
+    description: "use gp3 volumes for better cost and performance over gp2"
+    resource: terraform.aws_instance
+    metadata:
+      severity: low
+      categories: [cost]
+    filters:
+      - or:
+          - type: value
+            key: root_block_device.volume_type
+            value: gp2
+          - type: value
+            key: ebs_block_device.volume_type
+            value: gp2
+#          - type: list-item
+#            key: ebs_block_device
+#            attrs:
+#              - volume_type: gp2
