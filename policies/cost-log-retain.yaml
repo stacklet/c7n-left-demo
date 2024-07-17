@@ -1,0 +1,17 @@
+policies:
+  - name: cost-log-group-retain-qa
+    description: "qa environments should retain cloud watch logs group for a max of 30 days" 
+    resource: terraform.aws_cloudwatch_log_group
+    metadata:
+      severity: medium
+      categories: [cost]
+    filters:
+      - or:
+         - type: value
+           key: retention_in_days
+           value: absent
+        
+         - type: value
+           key: retention_in_days
+           value: 30
+           op: lte
